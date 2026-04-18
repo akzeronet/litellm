@@ -22,7 +22,7 @@ class LicenseCheck:
     - Returns if license is valid
     """
 
-    base_url = "https://demo.demo.cloudron.io"
+    base_url = "https://lamp.demo.cloudron.io"
 
     def __init__(self) -> None:
         self.license_str = os.getenv("LITELLM_LICENSE", None)
