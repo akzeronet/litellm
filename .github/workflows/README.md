@@ -32,4 +32,28 @@ Make sure the following secret is configured in the repository:
 - ✅ Automatic version updates in `pyproject.toml`
 - ✅ Repository safety check (only runs on official repo)
 - ✅ Clean package building and publishing
-- ✅ Success confirmation with PyPI package link 
+- ✅ Success confirmation with PyPI package link
+
+---
+
+# Build Docker image ignoring test status
+
+If you need a Docker image **right now** even when tests are failing, use:
+
+- Workflow: **Build Image (sin bloquear por tests)**
+- File: `.github/workflows/build-image-ignore-tests.yml`
+
+## How to run it
+
+1. Go to **Actions**.
+2. Select **Build Image (sin bloquear por tests)**.
+3. Click **Run workflow**.
+4. Optional inputs:
+   - `image_tag`: custom tag like `rc-2026-04-20`.
+   - `push_image`: set `true` to push to GHCR, `false` to build only.
+
+## Notes
+
+- This workflow is `workflow_dispatch` only (manual).
+- It does **not** depend on test workflows.
+- It can build from the selected branch/commit even if other CI checks are red.
