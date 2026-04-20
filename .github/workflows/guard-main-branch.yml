@@ -13,6 +13,7 @@ permissions: {}
 # breaks the gate.
 jobs:
   guard:
+    if: github.repository == 'BerriAI/litellm'
     name: Verify PR source branch
     runs-on: ubuntu-latest
     timeout-minutes: 2
