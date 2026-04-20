@@ -48,6 +48,9 @@ on:
 permissions:
   contents: read
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   run:
     name: Run tests
@@ -63,7 +66,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres@sha256:705a5d5b5836f3fcba0d02c4d281e6a7dd9ed2dd4078640f08a1e1e9896e097d # postgres:14
+        image: postgres:14
         env:
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
@@ -156,6 +159,7 @@ jobs:
         with:
           name: coverage-${{ inputs.artifact-name }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: coverage.xml
+          if-no-files-found: ignore
           retention-days: 1
 
   upload-coverage:
