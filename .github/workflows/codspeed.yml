@@ -28,7 +28,8 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout repository
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
           persist-credentials: false
 
@@ -42,8 +43,8 @@ jobs:
         with:
           version: "0.10.9"
 
-      - name: Run benchmarks
-      if: ${{ github.repository == 'BerriAI/litellm' }}
+      - name: Run benchmarks (CodSpeed upload)
+        if: ${{ github.repository == 'BerriAI/litellm' }}
         uses: CodSpeedHQ/action@1c8ae4843586d3ba879736b7f6b7b0c990757fab # v4.12.1
         with:
           mode: simulation
